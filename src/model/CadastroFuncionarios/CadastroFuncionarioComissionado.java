@@ -22,7 +22,10 @@ public class CadastroFuncionarioComissionado {
         System.out.println("Digite o salario do funcionário: ");
         double salariobase = scanner.nextDouble();
 
-        FuncionarioComissionado novFuncionarioComissionado = new FuncionarioComissionado(nome, cpf, cargo, salariobase);
+        System.out.println("Digite a quantidade de vendas esse mês: ");
+        double vendas = scanner.nextDouble();
+
+        FuncionarioComissionado novFuncionarioComissionado = new FuncionarioComissionado(nome, cpf, cargo, salariobase, vendas);
 
         // adiciona novo funcionario a lista
         funcionarioComissionadoList.add(novFuncionarioComissionado);

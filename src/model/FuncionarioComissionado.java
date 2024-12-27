@@ -6,9 +6,10 @@ public class FuncionarioComissionado extends Funcionarios {
     private double vendas; // Total de vendas realizadas pelo funcionário
 
     // Construtor da classe
-    public FuncionarioComissionado(String nome, String cpf, String cargo, double salarioBase) {
+    public FuncionarioComissionado(String nome, String cpf, String cargo, double salarioBase, double vendas) {
         super(nome, cpf, cargo);
         this.salarioBase = salarioBase;
+        this.vendas = vendas;
     }
 
     // Getter e Setter para comissão

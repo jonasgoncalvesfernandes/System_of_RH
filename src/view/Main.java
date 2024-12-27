@@ -9,60 +9,114 @@ import java.util.Locale;
 public class Main {
     public static void main(String[] args) {
         // configurando o scanner para usar o locale BR
-        // objetivo aceitar a formatação do salario do usuario
         Scanner scanner = new Scanner(System.in).useLocale(Locale.forLanguageTag("pt_br"));
 
-        // criando uma instancia de CadastroFuncionarioAssalariado
+        // criando instâncias dos tipos de cadastro de funcionários
         CadastroFuncionarioAssalariado cadastroAssalariado = new CadastroFuncionarioAssalariado();
-        // Criando uma instância de CadastroFuncionarioHorista
         CadastroFuncionarioHorista cadastroHorista = new CadastroFuncionarioHorista();
-        // Criando uma instância de FuncionarioComissionado
         CadastroFuncionarioComissionado cadastroComissionado = new CadastroFuncionarioComissionado();
 
-        // leitura quantidade de funcionarios
-        System.out.println("Digite quantos funcionarios sua empresa vai ter: ");
-        int quantidadeFuncionarios = scanner.nextInt();
+        System.out.println("--- RH JG ---\n");
 
-        // Consome o restante da linha em branco após nextInt()
-        scanner.nextLine();
-        for (int i = 0; i < quantidadeFuncionarios; i++) {
-            System.out.println("Escolha o tipo de funcionário\n[1] - Assalariado\n[2] - Horista\n[3] - Comissionado");
-            int tipoFuncionario = scanner.nextInt();
-            scanner.nextLine(); // Consome a linha em branco
+        // Variáveis de controle
+        int quantidadeFuncionarios = 0;
+        int opcao = 0;
 
-            // Opção 1 funcionarioAssalariado
-            if (tipoFuncionario == 1) {
-                cadastroAssalariado.cadastrarFuncionarioAssalariado(scanner);
-            }
-            // Opção 2 funcionarioHorista
-            if (tipoFuncionario == 2) {
-                cadastroHorista.cadastrarFuncionarioHorista(scanner);
-            }
-            // Opção 3 funcionarioComissionado
-            if (tipoFuncionario == 3) {
-                cadastroComissionado.cadastrarFuncionarioComissionado(scanner);
-            }
+        // Menu principal e loop de controle
+        while (true) {
+            System.out.println("Escolha uma opção:");
+            System.out.println("[1] - Definir quantidade de funcionários e Cadastrar");
+            System.out.println("[2] - Exibir Funcionários por tipo");
+            System.out.println("[3] - Exibir Todos os funcionários");
+            System.out.println("[0] - Sair");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a linha em branco
 
-            break;
+            switch (opcao) {
+                case 1:
+                    // Definindo quantidade de funcionários e cadastrando
+                    System.out.println("Digite quantos funcionários sua empresa vai ter: ");
+                    quantidadeFuncionarios = scanner.nextInt();
+                    scanner.nextLine(); // Consumir a linha em branco após nextInt()
+
+                    // Loop para cadastro de funcionários
+                    for (int i = 0; i < quantidadeFuncionarios; i++) {
+                        System.out.println("Escolha o tipo de funcionário:");
+                        System.out.println("[1] - Assalariado");
+                        System.out.println("[2] - Horista");
+                        System.out.println("[3] - Comissionado");
+                        System.out.println("[0] - Cancelar cadastro");
+
+                        int tipoFuncionario = scanner.nextInt();
+                        scanner.nextLine(); // Consumir a linha em branco após nextInt()
+
+                        // Cadastro de funcionário com base no tipo
+                        switch (tipoFuncionario) {
+                            case 1:
+                                cadastroAssalariado.cadastrarFuncionarioAssalariado(scanner);
+                                break;
+                            case 2:
+                                cadastroHorista.cadastrarFuncionarioHorista(scanner);
+                                break;
+                            case 3:
+                                cadastroComissionado.cadastrarFuncionarioComissionado(scanner);
+                                break;
+                            case 0:
+                                System.out.println("Cadastro cancelado.");
+                                break;
+                            default:
+                                System.out.println("Opção inválida! Tente novamente.");
+                                i--; // Decrementa o contador para permitir nova tentativa de cadastro
+                                break;
+                        }
+                    }
+                    break;
+
+                case 2:
+                    // Exibir funcionários por tipo
+                    System.out.println("[1] - Assalariado");
+                    System.out.println("[2] - Horista");
+                    System.out.println("[3] - Comissionado");
+
+                    int tipoFuncionario = scanner.nextInt();
+                    scanner.nextLine(); // Consumir a linha em branco após nextInt()
+
+                    switch (tipoFuncionario) {
+                        case 1:
+                            System.out.println("\nExibindo funcionários Assalariados:");
+                            cadastroAssalariado.exibir_Funcionarios();
+                            break;
+                        case 2:
+                            System.out.println("\nExibindo funcionários Horistas:");
+                            cadastroHorista.exibir_funcionario();
+                            break;
+                        case 3:
+                            System.out.println("\nExibindo funcionários Comissionados:");
+                            cadastroComissionado.exibir_funcionario();
+                            break;
+                        default:
+                            System.out.println("Opção inválida! Tente novamente.");
+                            break;
+                    }
+                    break;
+
+                case 3:
+                    // Exibir todos os funcionários
+                    System.out.println("\nExibindo todos os funcionários:");
+                    cadastroAssalariado.exibir_Funcionarios();
+                    cadastroHorista.exibir_funcionario();
+                    cadastroComissionado.exibir_funcionario();
+                    break;
+
+                case 0:
+                    // Sair do programa
+                    System.out.println("Saindo do sistema...");
+                    return; // Encerra o programa
+
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
+            }
         }
-
-        // System.out.println("Escolha uma opção\n[1] - Exibir todos funcionarios\n[2] -
-        // Exibir funcionarios por tipo de funcionario");
-        // int opcaoExibir = scanner.nextInt();
-
-        // Imprimindo lista de funcionario Assalariado
-        // cadastroAssalariado é uma instancia de CadastroFuncionarioAssalariado
-        cadastroAssalariado.exibirFuncionarios(); // Chama o método da instância
-
-        System.out.println();
-
-        // imprimindo funcionarios Horistas
-        cadastroComissionado.exibir_funcionario();
-
-        System.out.println();
-
-        cadastroHorista.exibir_funcionario();
-
     }
-
 }

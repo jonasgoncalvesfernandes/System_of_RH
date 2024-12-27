@@ -38,7 +38,7 @@ public class CadastroFuncionarioAssalariado {
     // funcionarioHoristaAdd Variavel temporaria só para pegar o funcionario e
     // armazenar em funcionarioHoristaList
     // Método para exibir os funcionários cadastrados
-    public void exibirFuncionarios() {
+    public void exibir_Funcionarios() {
         for (FuncionarioAssalariado funcionario : funcionariosAssalariadosList) {
             System.out.println(funcionario);
         }
