@@ -39,17 +39,25 @@ public class FuncionarioComissionado extends Funcionarios {
     // Método para comissão escalonada (exemplo)
     public double calcularSalarioComissaoEscalonada() {
         double valorComissao = 0.0;
-
+    
         if (vendas <= 5000) {
-            valorComissao = vendas * 0.05; // 5% para vendas até 5000
-        } else if (vendas <= 10000) {
-            valorComissao = (5000 * 0.05) + ((vendas - 5000) * 0.07); // 7% para vendas acima de 5000
-        } else {
-            valorComissao = (5000 * 0.05) + (5000 * 0.07) + ((vendas - 10000) * 0.10); // 10% para vendas acima de 10000
+            valorComissao = this.vendas * 0.05; // 5% para vendas até 5000
+            return calcularNovaComissao(salarioBase, valorComissao);
         }
-
+    
+        if (vendas <= 10000) {
+            valorComissao = (5000 * 0.05) + ((this.vendas - 5000) * 0.07); // 7% para vendas acima de 5000
+            return calcularNovaComissao(salarioBase, valorComissao);
+        }
+    
+        valorComissao = (5000 * 0.05) + (5000 * 0.07) + ((this.vendas - 10000) * 0.10); // 10% para vendas acima de 10000
+        return calcularNovaComissao(salarioBase, valorComissao);
+    }
+    
+    private double calcularNovaComissao(double salarioBase, double valorComissao) {
         return salarioBase + valorComissao;
     }
+    
 
     // Método para exibir salário completo
     public void exibirSalario() {

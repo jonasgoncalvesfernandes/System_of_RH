@@ -36,10 +36,11 @@ public class Main {
             }
             // Opção 2 funcionarioHorista
             if (tipoFuncionario == 2) {
-                cadastroComissionado.cadastrarFuncionarioComissionado(scanner);
-            }
-            if (tipoFuncionario == 3) {
                 cadastroHorista.cadastrarFuncionarioHorista(scanner);
+            }
+            // Opção 3 funcionarioComissionado
+            if (tipoFuncionario == 3) {
+                cadastroComissionado.cadastrarFuncionarioComissionado(scanner);
             }
 
             break;
