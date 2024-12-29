@@ -25,7 +25,8 @@ public class CadastroFuncionarioComissionado {
         System.out.println("Digite a quantidade de vendas esse mês: ");
         double vendas = scanner.nextDouble();
 
-        FuncionarioComissionado novFuncionarioComissionado = new FuncionarioComissionado(nome, cpf, cargo, salariobase, vendas);
+        FuncionarioComissionado novFuncionarioComissionado = new FuncionarioComissionado(nome, cpf, cargo, salariobase,
+                vendas);
 
         // adiciona novo funcionario a lista
         funcionarioComissionadoList.add(novFuncionarioComissionado);
@@ -40,5 +41,16 @@ public class CadastroFuncionarioComissionado {
             System.out.println(funcComissionado);
 
         }
+    }
+
+    // Metodo para procurar por cpf funcionarioComissionado
+    public FuncionarioComissionado procurarPorCpf(String cpf) {
+        for (FuncionarioComissionado funComissionado : funcionarioComissionadoList) {
+            if (funComissionado.getCPF().equals(cpf)) {
+                return funComissionado;
+            }
+        }
+        return null; // retorna null se não encontrar nenhum funcionario com cpf
+
     }
 }

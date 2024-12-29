@@ -1,5 +1,8 @@
 package view;
 
+import model.FuncionarioAssalariado;
+import model.FuncionarioComissionado;
+import model.FuncionarioHorista;
 import model.CadastroFuncionarios.CadastroFuncionarioAssalariado;
 import model.CadastroFuncionarios.CadastroFuncionarioHorista;
 import model.CadastroFuncionarios.CadastroFuncionarioComissionado;
@@ -28,6 +31,7 @@ public class Main {
             System.out.println("[1] - Definir quantidade de funcionários e Cadastrar");
             System.out.println("[2] - Exibir Funcionários por tipo");
             System.out.println("[3] - Exibir Todos os funcionários");
+            System.out.println("[4] - Procurar funcionario por cpf");
             System.out.println("[0] - Sair");
             opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir a linha em branco
@@ -106,6 +110,34 @@ public class Main {
                     cadastroAssalariado.exibir_Funcionarios();
                     cadastroHorista.exibir_funcionario();
                     cadastroComissionado.exibir_funcionario();
+                    break;
+                case 4:
+                    System.out.println("Digite o cpf do funcionario: ");
+                    String buscaCpf = scanner.nextLine();
+
+                    // buscar funcionario nas tres listas
+                    FuncionarioHorista funcionarioHorista = cadastroHorista.procurarPorCpf(buscaCpf);
+                    if (funcionarioHorista != null) {
+                        System.out.println("Funcionario encontrado: " + funcionarioHorista);
+                        System.out.println();
+                        break;
+                    }
+
+                    FuncionarioComissionado funcionarioComissionado = cadastroComissionado.procurarPorCpf(buscaCpf);
+                    if (funcionarioComissionado != null) {
+                        System.out.println("Funcionario encontrado: " + funcionarioComissionado);
+                        System.out.println();
+                        break;
+                    }
+
+                    FuncionarioAssalariado funcionarioAssalariado = cadastroAssalariado.procurarPorCpf(buscaCpf);
+                    if (funcionarioAssalariado != null) {
+                        System.out.println("Funcionario encontrado: " + funcionarioAssalariado);
+                        System.out.println();
+                        break;
+                    }
+
+                    System.out.println("Funcionario com o cpf: " + buscaCpf + " não encontrado");
                     break;
 
                 case 0:

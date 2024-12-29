@@ -43,4 +43,14 @@ public class CadastroFuncionarioAssalariado {
             System.out.println(funcionario);
         }
     }
+
+    public FuncionarioAssalariado procurarPorCpf(String cpf) {
+        for(FuncionarioAssalariado funcionario : funcionariosAssalariadosList){
+            if(funcionario.getCPF().equals(cpf)){
+                return funcionario;
+            }
+        }
+
+        return null;//null se não encontrar funcionario com esse cpf
+    }
 }
