@@ -1,6 +1,5 @@
 package model.CadastroFuncionarios;
 
-import model.FuncionarioAssalariado;
 import model.FuncionarioComissionado;
 
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package model.CadastroFuncionarios;
 
 import model.FuncionarioAssalariado;
-import model.FuncionarioHorista;
 
 import java.util.Scanner;
 import java.util.ArrayList;

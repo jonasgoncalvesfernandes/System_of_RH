@@ -10,10 +10,19 @@ import java.util.Scanner;
 import java.util.Locale;
 
 public class Main {
+    // Static para indicar que as constantes são associadas à classe e podem ser acessadas sem instanciar a classe
+    // Acessibilidade sem instânciar a classe
+    // Final = valor não pode ser alterado após ser atribuido
+    public static final int OPCAO_CADASTRAR_FUNCIONARIO = 1;
+    public static final int OPCAO_EXIBIR_FUNCIONARIOS_POR_TIPO = 2;
+    public static final int OPCAO_EXIBIR_TODOS_OS_FUNCIONARIOS = 3;
+    public static final int OPCAO_PROCURAR_FUNCIONARIO_POR_CPF = 4;
+    public static final int OPCAO_REMOVER_FUNCIONARIO = 5;
+    public static final int OPCAO_SAIR = 0;
+
     public static void main(String[] args) {
         // configurando o scanner para usar o locale BR
         Scanner scanner = new Scanner(System.in).useLocale(Locale.forLanguageTag("pt_br"));
-        
 
         // criando instâncias dos tipos de cadastro de funcionários
         CadastroFuncionarioAssalariado cadastroAssalariado = new CadastroFuncionarioAssalariado();
@@ -21,7 +30,6 @@ public class Main {
         CadastroFuncionarioComissionado cadastroComissionado = new CadastroFuncionarioComissionado();
 
         System.out.println("--- RH JG ---\n");
-
 
         // Variáveis de controle
         int quantidadeFuncionarios = 0;
@@ -40,7 +48,7 @@ public class Main {
             scanner.nextLine(); // Consumir a linha em branco
 
             switch (opcao) {
-                case 1:
+                case OPCAO_CADASTRAR_FUNCIONARIO:
                     // Definindo quantidade de funcionários e cadastrando
                     System.out.println("Digite quantos funcionários sua empresa vai ter: ");
                     quantidadeFuncionarios = scanner.nextInt();
@@ -79,7 +87,7 @@ public class Main {
                     }
                     break;
 
-                case 2:
+                case OPCAO_EXIBIR_FUNCIONARIOS_POR_TIPO:
                     // Exibir funcionários por tipo
                     System.out.println("[1] - Assalariado");
                     System.out.println("[2] - Horista");
@@ -107,14 +115,15 @@ public class Main {
                     }
                     break;
 
-                case 3:
+                case OPCAO_EXIBIR_TODOS_OS_FUNCIONARIOS:
                     // Exibir todos os funcionários
                     System.out.println("\nExibindo todos os funcionários:");
                     cadastroAssalariado.exibir_Funcionarios();
                     cadastroHorista.exibir_funcionario();
                     cadastroComissionado.exibir_funcionario();
                     break;
-                case 4:
+
+                case OPCAO_PROCURAR_FUNCIONARIO_POR_CPF:
                     System.out.println("Digite o cpf do funcionario: ");
                     String buscaCpf = scanner.nextLine();
 
@@ -143,7 +152,7 @@ public class Main {
                     System.out.println("Funcionario com o cpf: " + buscaCpf + " não encontrado");
                     break;
 
-                case 5:
+                case OPCAO_REMOVER_FUNCIONARIO:
                     System.out.println("Digite o CPF do funcionário que deseja remover: ");
                     String cpfBusca = scanner.nextLine();
 
@@ -189,7 +198,7 @@ public class Main {
                     }
                     break;
 
-                case 0:
+                case OPCAO_SAIR:
                     // Sair do programa
                     System.out.println("Saindo do sistema...");
                     return; // Encerra o programa
@@ -199,8 +208,6 @@ public class Main {
                     break;
             }
 
-            //Liberando memoria alocada
-            scanner.close();
         }
 
     }
