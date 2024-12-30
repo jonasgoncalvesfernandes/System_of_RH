@@ -37,27 +37,33 @@ public class CadastroFuncionarioHorista {
 
         // adicionando funcionario a lista
         funcionarioHoristaList.add(novFuncionarioHorista);
-        
+
         System.out.println("Funcionário Horista adicionado com sucesso.");
 
     }
-    //função para exibir todos os funcionarios
+
+    // função para exibir todos os funcionarios
     public void exibir_funcionario() {
         for (FuncionarioHorista funcHorista : funcionarioHoristaList) {
             System.out.println(funcHorista);
         }
     }
-    
-    //criando um metodo pra procurar por cpf do tipo FuncionarioHorista
-    public FuncionarioHorista procurarPorCpf(String cpf){
-        //percorrendo a lista para comparar os cpf se é igual o digitado
+
+    // criando um metodo pra procurar por cpf do tipo FuncionarioHorista
+    public FuncionarioHorista procurarPorCpf(String cpf) {
+        // percorrendo a lista para comparar os cpf se é igual o digitado
         for (FuncionarioHorista funcHorista : funcionarioHoristaList) {
-            if (funcHorista.getCPF().equals(cpf)){
+            if (funcHorista.getCPF().equals(cpf)) {
                 return funcHorista;
             }
         }
 
-        return null; //retorna null se não encontrar nenhum funcionario com cpf
+        return null; // retorna null se não encontrar nenhum funcionario com cpf
+    }
+
+    // Método para remover um funcionário
+    public boolean remover(FuncionarioHorista funcionario) {
+        return funcionarioHoristaList.remove(funcionario); // Retorna true se o funcionário foi removido
     }
 
 }

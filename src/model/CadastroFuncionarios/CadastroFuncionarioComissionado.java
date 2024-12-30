@@ -1,5 +1,6 @@
 package model.CadastroFuncionarios;
 
+import model.FuncionarioAssalariado;
 import model.FuncionarioComissionado;
 
 import java.util.ArrayList;
@@ -52,5 +53,10 @@ public class CadastroFuncionarioComissionado {
         }
         return null; // retorna null se não encontrar nenhum funcionario com cpf
 
+    }
+
+        // Método para remover um funcionário
+    public boolean remover(FuncionarioComissionado funcionario) {
+        return funcionarioComissionadoList.remove(funcionario); // Retorna true se o funcionário foi removido
     }
 }

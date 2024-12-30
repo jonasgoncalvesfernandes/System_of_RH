@@ -32,6 +32,7 @@ public class Main {
             System.out.println("[2] - Exibir Funcionários por tipo");
             System.out.println("[3] - Exibir Todos os funcionários");
             System.out.println("[4] - Procurar funcionario por cpf");
+            System.out.println("[5] - Remover funcionario");
             System.out.println("[0] - Sair");
             opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir a linha em branco
@@ -138,6 +139,51 @@ public class Main {
                     }
 
                     System.out.println("Funcionario com o cpf: " + buscaCpf + " não encontrado");
+                    break;
+
+                case 5:
+                    System.out.println("Digite o CPF do funcionário que deseja remover: ");
+                    String cpfBusca = scanner.nextLine();
+
+                    // Procurar o funcionário nas listas
+                    FuncionarioHorista funcionarioHoristaa = cadastroHorista.procurarPorCpf(cpfBusca);
+                    FuncionarioComissionado funcionarioComissionadoo = cadastroComissionado.procurarPorCpf(cpfBusca);
+                    FuncionarioAssalariado funcionarioAssalariadoo = cadastroAssalariado.procurarPorCpf(cpfBusca);
+
+                    // Verificar se algum funcionário foi encontrado
+                    if (funcionarioHoristaa != null || funcionarioComissionadoo != null
+                            || funcionarioAssalariadoo != null) {
+                        // Exibir os dados do funcionário encontrado
+                        if (funcionarioHoristaa != null) {
+                            System.out.println("Funcionário encontrado\n" + funcionarioHoristaa);
+                        } else if (funcionarioComissionadoo != null) {
+                            System.out.println("Funcionário encontrado\n" + funcionarioComissionadoo);
+                        } else if (funcionarioAssalariadoo != null) {
+                            System.out.println("Funcionário encontrado\n " + funcionarioAssalariadoo);
+                        }
+
+                        // Solicitar confirmação para remoção
+                        System.out.println("Deseja remover este funcionário? (sim/nao)");
+                        String resposta = scanner.nextLine().toLowerCase();
+
+                        if (resposta.equals("sim")) {
+                            // Realizar a remoção do funcionário
+                            if (funcionarioHoristaa != null) {
+                                cadastroHorista.remover(funcionarioHoristaa);
+                                System.out.println("Funcionário horista removido com sucesso.");
+                            } else if (funcionarioComissionadoo != null) {
+                                cadastroComissionado.remover(funcionarioComissionadoo);
+                                System.out.println("Funcionário comissionado removido com sucesso.");
+                            } else if (funcionarioAssalariadoo != null) {
+                                cadastroAssalariado.remover(funcionarioAssalariadoo);
+                                System.out.println("Funcionário assalariado removido com sucesso.");
+                            }
+                        } else {
+                            System.out.println("Remoção cancelada.");
+                        }
+                    } else {
+                        System.out.println("Funcionário não encontrado.");
+                    }
                     break;
 
                 case 0:

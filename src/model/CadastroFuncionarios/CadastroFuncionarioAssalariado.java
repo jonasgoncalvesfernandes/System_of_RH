@@ -1,6 +1,8 @@
 package model.CadastroFuncionarios;
 
 import model.FuncionarioAssalariado;
+import model.FuncionarioHorista;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -45,12 +47,17 @@ public class CadastroFuncionarioAssalariado {
     }
 
     public FuncionarioAssalariado procurarPorCpf(String cpf) {
-        for(FuncionarioAssalariado funcionario : funcionariosAssalariadosList){
-            if(funcionario.getCPF().equals(cpf)){
+        for (FuncionarioAssalariado funcionario : funcionariosAssalariadosList) {
+            if (funcionario.getCPF().equals(cpf)) {
                 return funcionario;
             }
         }
 
-        return null;//null se não encontrar funcionario com esse cpf
+        return null;// null se não encontrar funcionario com esse cpf
+    }
+
+    // Método para remover um funcionário
+    public boolean remover(FuncionarioAssalariado funcionario) {
+        return funcionariosAssalariadosList.remove(funcionario); // Retorna true se o funcionário foi removido
     }
 }

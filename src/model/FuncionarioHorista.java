@@ -56,4 +56,6 @@ public class FuncionarioHorista extends Funcionarios {
         // Calcula o salário com base nas horas, dias e salário por hora
         return horasTrabalhadas * salarioHora * diasTrabalhados;
     }
+
+    
 }
