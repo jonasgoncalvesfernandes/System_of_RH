@@ -155,7 +155,7 @@ public class Main {
                     // Verificar se algum funcionário foi encontrado
                     if (funcionarioHoristaa != null || funcionarioComissionadoo != null
                             || funcionarioAssalariadoo != null) {
-                        // Exibir os dados do funcionário encontrado
+                        // Exibe os dados do funcionário encontrado
                         if (funcionarioHoristaa != null) {
                             System.out.println("Funcionário encontrado\n" + funcionarioHoristaa);
                         } else if (funcionarioComissionadoo != null) {
