@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         // configurando o scanner para usar o locale BR
         Scanner scanner = new Scanner(System.in).useLocale(Locale.forLanguageTag("pt_br"));
+        
 
         // criando instâncias dos tipos de cadastro de funcionários
         CadastroFuncionarioAssalariado cadastroAssalariado = new CadastroFuncionarioAssalariado();
@@ -20,6 +21,7 @@ public class Main {
         CadastroFuncionarioComissionado cadastroComissionado = new CadastroFuncionarioComissionado();
 
         System.out.println("--- RH JG ---\n");
+
 
         // Variáveis de controle
         int quantidadeFuncionarios = 0;
@@ -183,6 +185,7 @@ public class Main {
                         }
                     } else {
                         System.out.println("Funcionário não encontrado.");
+
                     }
                     break;
 
@@ -195,6 +198,10 @@ public class Main {
                     System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
+
+            //Liberando memoria alocada
+            scanner.close();
         }
+
     }
 }
