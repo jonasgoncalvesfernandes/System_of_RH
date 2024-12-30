@@ -39,9 +39,18 @@ public class CadastroFuncionarioAssalariado {
     // funcionarioHoristaAdd Variavel temporaria só para pegar o funcionario e
     // armazenar em funcionarioHoristaList
     // Método para exibir os funcionários cadastrados
+
     public void exibir_Funcionarios() {
+        if (funcionariosAssalariadosList == null || funcionariosAssalariadosList.isEmpty()) {
+            // Se a lista estiver vazia, exibe uma mensagem informando.
+            System.out.println("Nenhum funcionário assalariado na lista.\n");
+            return; // Se estiver vazia, o método termina aqui e não continua com o loop
+        }
+
+        // Caso contrário, itera sobre a lista e exibe os dados de cada funcionário
         for (FuncionarioAssalariado funcionario : funcionariosAssalariadosList) {
-            System.out.println(funcionario);
+            System.out.println(funcionario); // Exibe os dados do funcionário (chama o método toString())
+            System.err.println();
         }
     }
 

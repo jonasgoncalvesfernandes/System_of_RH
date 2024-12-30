@@ -11,6 +11,7 @@ public class FuncionarioAssalariado extends Funcionarios {
     @Override
     //reutilização de codigo, sem precisar criar outro metodo e evitando duplicação de codigo
     public String toString() {
-        return super.toString() + "\nSalário: R$ " + getSalario();
+        String tipo = "Assalariado";
+        return super.toString() + "\nSalário: R$ " + getSalario() + "\nTipo de funcionario: ".concat(tipo);
     }
 }

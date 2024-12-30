@@ -67,7 +67,8 @@ public class FuncionarioComissionado extends Funcionarios {
     }
     @Override
     public String toString(){
-        return super.toString() + "\nSalario base: R$" + salarioBase + "\nSalario com comissão: R$ " + calcularSalarioComissaoEscalonada();
+        String tipo = "Comissionado";
+        return super.toString() + "\nSalario base: R$" + salarioBase + "\nSalario com comissão: R$ " + calcularSalarioComissaoEscalonada() + "\nTipo de funcionario: ".concat(tipo);
 
     }
 

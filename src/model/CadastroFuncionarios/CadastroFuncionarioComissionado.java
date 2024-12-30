@@ -16,6 +16,13 @@ public class CadastroFuncionarioComissionado {
         System.out.println("Digite o cpf do funcionário: ");
         String cpf = scanner.nextLine();
 
+        // Verifica se o CPF já está cadastrado
+        if (procurarPorCpf(cpf) != null) {
+            System.out.println(
+                    "Erro: O CPF informado já está cadastrado. Não é possível adicionar um funcionário com CPF duplicado.");
+            return; // Retorna para evitar que o funcionário seja adicionado
+        }
+
         System.out.println("Digite o cargo do funcionário: ");
         String cargo = scanner.nextLine();
 
@@ -35,11 +42,18 @@ public class CadastroFuncionarioComissionado {
 
     }
 
-    // exibir dados do funcionario
+    // Verifica se a lista de funcionários comissionados está vazia antes de exibir
+    // os dados.
     public void exibir_funcionario() {
-        for (FuncionarioComissionado funcComissionado : funcionarioComissionadoList) {
-            System.out.println(funcComissionado);
+        if (funcionarioComissionadoList == null || funcionarioComissionadoList.isEmpty()) {
+            // Se a lista estiver vazia, exibe uma mensagem informando.
+            System.out.println("Nenhum funcionário comissionado na lista.\n");
+            return; // Se estiver vazia, o método termina aqui e não continua com o loop
+        }
 
+        // Caso contrário, itera sobre a lista e exibe os dados de cada funcionário
+        for (FuncionarioComissionado funcComissionado : funcionarioComissionadoList) {
+            System.out.println(funcComissionado); // Exibe os dados do funcionário (chama o método toString())
         }
     }
 
@@ -54,7 +68,7 @@ public class CadastroFuncionarioComissionado {
 
     }
 
-        // Método para remover um funcionário
+    // Método para remover um funcionário
     public boolean remover(FuncionarioComissionado funcionario) {
         return funcionarioComissionadoList.remove(funcionario); // Retorna true se o funcionário foi removido
     }

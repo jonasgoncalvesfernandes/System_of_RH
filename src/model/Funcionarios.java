@@ -16,9 +16,11 @@ public class Funcionarios {
         this.salario = salario;
     }
 
-    //Nesse caso só foi possivel com Sobrescrita do construtor Funcionarios
-    // Construtor com 3 parâmetros (usado para funcionários sem salário fixo, como FuncionarioHorista)
-    // Sobrescrevendo construtor para classe FuncionarioHorista, já que o salario do mesmo vai ser calculado de forma independente
+    // Nesse caso só foi possivel com Sobrescrita do construtor Funcionarios
+    // Construtor com 3 parâmetros (usado para funcionários sem salário fixo, como
+    // FuncionarioHorista)
+    // Sobrescrevendo construtor para classe FuncionarioHorista, já que o salario do
+    // mesmo vai ser calculado de forma independente
     public Funcionarios(String nome, String cpf, String cargo) {
         this.nome = nome;
         this.cpf = cpf;
@@ -62,15 +64,16 @@ public class Funcionarios {
         this.cargo = cargo;
     }
 
-    //metodo pra calcular salario
+    // metodo pra calcular salario
     public double calcularSalario() {
         return salario;
     }
-    
 
-    //Sobrescrito (ToString)
+    // Sobrescrito (ToString)
     @Override
     public String toString() {
         return "Nome: " + nome + "\nCargo: " + cargo + "\nCPF: " + cpf;
     }
+
+
 }

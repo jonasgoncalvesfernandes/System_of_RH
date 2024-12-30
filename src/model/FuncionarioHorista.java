@@ -46,8 +46,9 @@ public class FuncionarioHorista extends Funcionarios {
     // Sobrescrever o toString de funcionarios para mostrar horas trabalhadas;
     @Override
     public String toString() {
+        String tipo = "Horista";
         // Exibe apenas as informações básicas, sem o salário fixo
-        return super.toString() + "\nHoras trabalhadas: " + horasTrabalhadas + "\nSalário por hora: R$ " + salarioHora +  "\nDias trabalhados: " + diasTrabalhados + "\nSalario Total: R$" + calcularSalario();
+        return super.toString() + "\nHoras trabalhadas: " + horasTrabalhadas + "\nSalário por hora: R$ " + salarioHora +  "\nDias trabalhados: " + diasTrabalhados + "\nSalario Total: R$" + calcularSalario() + "\nTipo de Funcionario: ".concat(tipo);
     }
 
     // Método para calcular o salário total (sem o parâmetro salário fixo)

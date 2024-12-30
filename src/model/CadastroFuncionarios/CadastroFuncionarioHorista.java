@@ -44,8 +44,16 @@ public class CadastroFuncionarioHorista {
 
     // função para exibir todos os funcionarios
     public void exibir_funcionario() {
+        // isEmpty verifica se a lista está vazia, retornando true se não houver
+        // elementos, e false caso contrário.
+        if (funcionarioHoristaList == null || funcionarioHoristaList.isEmpty()) {
+            System.out.println("Nenhum funcionário Horista na lista.\n");
+            return; // Se a lista estiver vazia, o método retorna aqui
+        }
+
+        // Se a lista não estiver vazia, exibe todos os funcionários
         for (FuncionarioHorista funcHorista : funcionarioHoristaList) {
-            System.out.println(funcHorista);
+            System.out.println(funcHorista); 
         }
     }
 
