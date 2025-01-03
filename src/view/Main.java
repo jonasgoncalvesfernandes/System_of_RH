@@ -10,10 +10,9 @@ import java.util.Scanner;
 import java.util.Locale;
 
 public class Main {
-    // Static para indicar que as constantes são associadas à classe e podem ser
-    // acessadas sem instanciar a classe
-    // Acessibilidade sem instânciar a classe
-    // Final = valor não pode ser alterado após ser atribuido
+    // Constantes para representar as opções de menu. 
+    // 'static' permite que as constantes sejam acessadas sem instanciar a classe.
+    // 'final' garante que o valor da constante não possa ser alterado após ser atribuído.
     public static final int OPCAO_CADASTRAR_FUNCIONARIO = 1;
     public static final int OPCAO_EXIBIR_FUNCIONARIOS_POR_TIPO = 2;
     public static final int OPCAO_EXIBIR_TODOS_OS_FUNCIONARIOS = 3;
