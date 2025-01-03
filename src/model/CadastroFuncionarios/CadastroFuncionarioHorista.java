@@ -1,22 +1,30 @@
 package model.CadastroFuncionarios;
 
 import model.FuncionarioHorista;
-
+import model.utils.VerificadorDuplicidadeCPF;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CadastroFuncionarioHorista {
-    ArrayList<FuncionarioHorista> funcionarioHoristaList = new ArrayList<>();
+    public ArrayList<FuncionarioHorista> funcionarioHoristaList = new ArrayList<>();
 
-    // Método para cadastrar um funcionário horista //chamando o metodo scanner de
-    // main.java
-    public void cadastrarFuncionarioHorista(Scanner scanner) {
+    // Método para cadastrar um funcionário horista
+    // Chamando o metodo scanner de Main.java
+    public void cadastrarFuncionarioHorista(Scanner scanner, CadastroFuncionarioComissionado cadastroComissionado,
+            CadastroFuncionarioAssalariado cadastroAssalariado, CadastroFuncionarioHorista cadastroHorista) {
         // Coletando os dados do funcionário Extends.Funcionario
         System.out.println("Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
 
         System.out.println("Digite o CPF do funcionário: ");
         String cpf = scanner.nextLine();
+
+        // Verifica se o CPF ja existe
+        if (VerificadorDuplicidadeCPF.verificarDuplicidadeCPF(cpf, cadastroHorista, cadastroAssalariado,
+                cadastroComissionado)) {
+            System.out.println("Erro: O CPF informado já está cadastrado em outro tipo de funcionário.");
+            return; // Não continua se CPF for duplicado
+        }
 
         System.out.println("Digite o cargo do funcionário: ");
         String cargo = scanner.nextLine();
@@ -53,7 +61,7 @@ public class CadastroFuncionarioHorista {
 
         // Se a lista não estiver vazia, exibe todos os funcionários
         for (FuncionarioHorista funcHorista : funcionarioHoristaList) {
-            System.out.println(funcHorista); 
+            System.out.println(funcHorista);
         }
     }
 

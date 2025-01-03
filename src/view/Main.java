@@ -70,13 +70,13 @@ public class Main {
                         // Cadastro de funcionário com base no tipo
                         switch (tipoFuncionario) {
                             case 1:
-                                cadastroAssalariado.cadastrarFuncionarioAssalariado(scanner);
+                                cadastroAssalariado.cadastrarFuncionarioAssalariado(scanner, cadastroComissionado, cadastroAssalariado, cadastroHorista);
                                 break;
                             case 2:
-                                cadastroHorista.cadastrarFuncionarioHorista(scanner);
+                                cadastroHorista.cadastrarFuncionarioHorista(scanner, cadastroComissionado, cadastroAssalariado, cadastroHorista);
                                 break;
                             case 3:
-                                cadastroComissionado.cadastrarFuncionarioComissionado(scanner);
+                                cadastroComissionado.cadastrarFuncionarioComissionado(scanner, cadastroComissionado, cadastroAssalariado, cadastroHorista);
                                 break;
                             case 0:
                                 System.out.println("Cadastro cancelado.");

@@ -1,6 +1,7 @@
 package model.CadastroFuncionarios;
 
 import model.FuncionarioAssalariado;
+import model.utils.VerificadorDuplicidadeCPF;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -11,13 +12,21 @@ public class CadastroFuncionarioAssalariado {
     private ArrayList<FuncionarioAssalariado> funcionariosAssalariadosList = new ArrayList<>();
 
     // Método para cadastrar um funcionário assalariado
-    public void cadastrarFuncionarioAssalariado(Scanner scanner) {
+    public void cadastrarFuncionarioAssalariado(Scanner scanner, CadastroFuncionarioComissionado cadastroComissionado,
+            CadastroFuncionarioAssalariado cadastroAssalariado, CadastroFuncionarioHorista cadastroHorista) {
         // Coletando os dados do funcionário
         System.out.println("Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
 
         System.out.println("Digite o CPF do funcionário: ");
         String cpf = scanner.nextLine();
+
+        //Verifica se o CPF ja existe
+        if (VerificadorDuplicidadeCPF.verificarDuplicidadeCPF(cpf, cadastroHorista, cadastroAssalariado,
+                cadastroComissionado)) {
+            System.out.println("Erro: O CPF informado já está cadastrado em outro tipo de funcionário.");
+            return; // Não continua se CPF for duplicado
+        }
 
         System.out.println("Digite o cargo do funcionário: ");
         String cargo = scanner.nextLine();

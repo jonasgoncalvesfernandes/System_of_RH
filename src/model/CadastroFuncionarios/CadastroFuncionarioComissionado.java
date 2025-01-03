@@ -1,14 +1,17 @@
 package model.CadastroFuncionarios;
 
 import model.FuncionarioComissionado;
-
+import model.utils.VerificadorDuplicidadeCPF;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CadastroFuncionarioComissionado {
-    private ArrayList<FuncionarioComissionado> funcionarioComissionadoList = new ArrayList<>();
+    public ArrayList<FuncionarioComissionado> funcionarioComissionadoList = new ArrayList<>();
 
-    public void cadastrarFuncionarioComissionado(Scanner scanner) {
+    // Passando as instâncias dos objetos de cadastro para verificar a duplicidade
+    // de CPF
+    public void cadastrarFuncionarioComissionado(Scanner scanner, CadastroFuncionarioComissionado cadastroComissionado,
+            CadastroFuncionarioAssalariado cadastroAssalariado, CadastroFuncionarioHorista cadastroHorista) {
         // Coletando os dados do funcionário
         System.out.println("Digite o nome do funcionário: ");
         String nome = scanner.nextLine();
@@ -16,11 +19,11 @@ public class CadastroFuncionarioComissionado {
         System.out.println("Digite o cpf do funcionário: ");
         String cpf = scanner.nextLine();
 
-        // Verifica se o CPF já está cadastrado
-        if (procurarPorCpf(cpf) != null) {
-            System.out.println(
-                    "Erro: O CPF informado já está cadastrado. Não é possível adicionar um funcionário com CPF duplicado.");
-            return; // Retorna para evitar que o funcionário seja adicionado
+        // Verifica se o CPF ja existe
+        if (VerificadorDuplicidadeCPF.verificarDuplicidadeCPF(cpf, cadastroHorista, cadastroAssalariado,
+                cadastroComissionado)) {
+            System.out.println("Erro: O CPF informado já está cadastrado em outro tipo de funcionário.");
+            return; // Não continua se CPF for duplicado
         }
 
         System.out.println("Digite o cargo do funcionário: ");
